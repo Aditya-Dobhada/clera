@@ -6,19 +6,19 @@ class Clera < Formula
   license "MIT"
 
   depends_on "gcc" # C compiler
-  depends_on "python@3.9" => :build # for Cython
+  depends_on "python@3.9" # for Cython and running the script
   depends_on "lp_solve" => :build
 
   def install
-    bin.install "clera"
     system "pip3 install cython" # install Cython
     system "./configure", *std_configure_args, "--disable-silent-rules"
     system "make", "install" # build and install
-    bin.install "clera"
+
+    # Install 'clera' as a script instead of a binary
+    bin.install "#{buildpath}/clera.py"
   end
 
   test do
-    system "#{bin}/clera", "--version" # test if the version command runs successfully
+    system "#{bin}/clera.py", "--version" # test if the version command runs successfully
   end
 end
-

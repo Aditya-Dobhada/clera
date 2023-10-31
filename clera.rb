@@ -7,7 +7,7 @@ class Clera < Formula
 
   depends_on "gcc" # C compiler
   depends_on "python@3.9" => :build # for Cython
-  depends_on "lpsolve" => :build
+  depends_on "lp_solve" => :build
 
   def install
     bin.install 'clera'

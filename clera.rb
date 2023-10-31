@@ -10,7 +10,6 @@ class Clera < Formula
   depends_on "lp_solve" => :build
 
   def install
-    bin.install "clera"
     system "pip3 install cython" # install Cython
     system "./configure", *std_configure_args, "--disable-silent-rules"
     system "make", "install" # build and install

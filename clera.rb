@@ -5,18 +5,13 @@ class Clera < Formula
   sha256 "400e142960fcf9d229df54466529599c6ce4c800184cbc3d6ba4c8fefd673ab1"
   license "MIT"
 
-  depends_on "gcc" # C compiler
-  depends_on "python@3.9" => :build # for Cython
-  depends_on "lp_solve" => :build
+  depends_on "python@3.9" # for running the Python script
 
   def install
-    system "pip3 install cython" # install Cython
-    system "./configure", *std_configure_args, "--disable-silent-rules"
-    system "make", "install" # build and install
     bin.install "clera.py"
   end
 
   test do
-    system "#{bin}/clera", "--version" # test if the version command runs successfully
+    system "#{bin}/clera.py", "--version" # test if the version command runs successfully
   end
 end

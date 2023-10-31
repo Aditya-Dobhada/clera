@@ -14,6 +14,7 @@ class Clera < Formula
     system "pip3 install cython" # install Cython
     system "./configure", *std_configure_args, "--disable-silent-rules"
     system "make", "install" # build and install
+    bin.install "clera"
   end
 
   test do

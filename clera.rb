@@ -8,10 +8,10 @@ class Clera < Formula
   depends_on "python@3.9" # for running the Python script
 
   def install
-    bin.install "clera.py"
+    bin.install "clera.py" => "clera"
   end
 
   test do
-    system "#{bin}/clera.py", "--version" # test if the version command runs successfully
+    system "#{bin}/clera", "--version" # test if the version command runs successfully
   end
 end
